@@ -16,6 +16,7 @@ public class Nhanvien {
     private String hoten;
     private String email;
     private String dc;
+    private String sdt;
     private String tdn;
     private String mk;
     private String trinhdo;
@@ -23,6 +24,7 @@ public class Nhanvien {
     private Chucvu chucvu;
     private Phongban phongban;
     private Bacluong bacluong;
+    private Chinhanh chinhanh;
 
     public Nhanvien() {
     }
@@ -113,6 +115,22 @@ public class Nhanvien {
 
     public void setBacluong(Bacluong bacluong) {
         this.bacluong = bacluong;
+    }
+
+    public Chinhanh getChinhanh() {
+        return chinhanh;
+    }
+
+    public void setChinhanh(Chinhanh chinhanh) {
+        this.chinhanh = chinhanh;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
     }
     
 }

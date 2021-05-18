@@ -16,11 +16,13 @@ import java.util.ArrayList;
 public class Bangluong {
     //id ngaybd kt quythuong chinhanh bangkpilist
     private int id;
+    private String ten;
     private Date ngaybd;
     private Date ngaykt;
-    private double quythuong;
+    private float quythuong;
     private Chinhanh chinhanh;
     private ArrayList<BangKPI> listBangKPI;
+    private ArrayList<Phieuluong> listPhieuluong;
 
     public Bangluong() {
     }
@@ -49,11 +51,11 @@ public class Bangluong {
         this.ngaykt = ngaykt;
     }
 
-    public double getQuythuong() {
+    public float getQuythuong() {
         return quythuong;
     }
 
-    public void setQuythuong(double quythuong) {
+    public void setQuythuong(float quythuong) {
         this.quythuong = quythuong;
     }
 
@@ -71,6 +73,22 @@ public class Bangluong {
 
     public void setListBangKPI(ArrayList<BangKPI> listBangKPI) {
         this.listBangKPI = listBangKPI;
+    }
+
+    public ArrayList<Phieuluong> getListPhieuluong() {
+        return listPhieuluong;
+    }
+
+    public void setListPhieuluong(ArrayList<Phieuluong> listPhieuluong) {
+        this.listPhieuluong = listPhieuluong;
+    }
+
+    public String getTen() {
+        return ten;
+    }
+
+    public void setTen(String ten) {
+        this.ten = ten;
     }
     
 }
