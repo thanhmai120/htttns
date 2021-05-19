@@ -6,6 +6,7 @@
 
 package model;
 
+import java.sql.Date;
 import java.sql.Time;
 
 /**
@@ -15,6 +16,7 @@ import java.sql.Time;
 public class Canhanvien {
     //ngay den ve tinhcong nghiphep pheduyet nhanvien loai np
     private int id;
+    private Date ngay;
     private Time den;
     private Time ve;
     private float cong;
@@ -97,6 +99,14 @@ public class Canhanvien {
 
     public void setCa(Ca ca) {
         this.ca = ca;
+    }
+
+    public Date getNgay() {
+        return ngay;
+    }
+
+    public void setNgay(Date ngay) {
+        this.ngay = ngay;
     }
     
 }

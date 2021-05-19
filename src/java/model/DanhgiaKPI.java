@@ -53,4 +53,23 @@ public class DanhgiaKPI {
         this.nhanvien = nhanvien;
     }
     
+    public void addDiemkpi(DiemKPI diem){
+        if(listDiemkpi==null){
+            listDiemkpi=new ArrayList<>();
+        }
+        listDiemkpi.add(diem);
+    }
+    
+    public void tinhDiemtb(){
+        if(listDiemkpi==null){
+            diemtb=0;
+        }else{
+            int s = listDiemkpi.size();
+            float tong=0;
+            for(int i=0;i<s;i++){
+                tong+=listDiemkpi.get(i).getDiem();
+            }
+            diemtb=tong;
+        }
+    }
 }

@@ -15,7 +15,8 @@ public class CotKPI {
     private int chitieu;
     private int mucduoi;
     private float heso;
-    private KPI kpi;
+    private String ten;
+    private String donvi;
 
     public CotKPI() {
     }
@@ -52,12 +53,22 @@ public class CotKPI {
         this.heso = heso;
     }
 
-    public KPI getKpi() {
-        return kpi;
+    public String getTen() {
+        return ten;
     }
 
-    public void setKpi(KPI kpi) {
-        this.kpi = kpi;
+    public void setTen(String ten) {
+        this.ten = ten;
     }
+
+    public String getDonvi() {
+        return donvi;
+    }
+
+    public void setDonvi(String donvi) {
+        this.donvi = donvi;
+    }
+
+    
     
 }
