@@ -88,7 +88,7 @@ public class BangluongDAO extends DAO{
                 bl.setId(rs.getInt("id"));
             }
             // them bangkpi
-            String sql2 = "UPDATE bangkpi SET bangluongid=? WHERE id=?";
+            String sql2 = "UPDATE bangkpi SET bangluongid=?,dasudung=true WHERE id=?";
             PreparedStatement ps2 = con.prepareStatement(sql2);
             ps2.setInt(1, bl.getId());
             ArrayList<BangKPI> listBangkpi = bl.getListBangKPI();

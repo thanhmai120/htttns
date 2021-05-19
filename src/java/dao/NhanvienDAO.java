@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Bacluong;
+import model.BangKPI;
 import model.Chinhanh;
 import model.Chucvu;
 import model.Nhanvien;
@@ -21,7 +22,7 @@ import model.Phongban;
  * @author Administrator
  */
 public class NhanvienDAO extends DAO{
-
+//Ham getlistNhanvienTaoDanhgia chua co trong bangkpi
     public NhanvienDAO() {
         super();
     }
@@ -74,6 +75,52 @@ public class NhanvienDAO extends DAO{
         try{
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, ten);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                if(listNhanvien==null){
+                    listNhanvien=new ArrayList<>();
+                }
+                Nhanvien nv = new Nhanvien();
+                Chucvu cv = new Chucvu();
+                cv.setId(rs.getInt("chucvu.id"));
+                cv.setTen(rs.getString("chucvu.ten"));
+                Phongban pb = new Phongban();
+                pb.setId(rs.getInt("phongban.id"));
+                pb.setTen(rs.getString("phongban.ten"));
+                Bacluong bl = new Bacluong();
+                bl.setId(rs.getInt("bacluong.id"));
+                bl.setMucluong(rs.getFloat("bacluong.sotien"));
+                Chinhanh cn = new Chinhanh();
+                cn.setId(rs.getInt("chinhanh.id"));
+                cn.setTen(rs.getString("chinhanh.ten"));
+                nv.setDc(rs.getString("nhanvien.dc"));
+                nv.setSdt(rs.getString("nhanvien.sdt"));
+                nv.setEmail(rs.getString("nhanvien.email"));
+                nv.setHoten(rs.getString("nhanvien.hoten"));
+                nv.setId(rs.getInt("nhanvien.id"));
+                nv.setCongviec(rs.getString("nhanvien.congviec"));
+                nv.setTrinhdo(rs.getString("nhanvien.trinhdo"));
+                nv.setChucvu(cv);
+                nv.setPhongban(pb);
+                nv.setBacluong(bl);
+                nv.setChinhanh(cn);
+                listNhanvien.add(nv);
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return listNhanvien;
+    }
+    
+    public ArrayList<Nhanvien> getListNhanvienThemBangKPI(BangKPI b){
+        ArrayList<Nhanvien> listNhanvien=null;
+        String sql ="SELECT * FROM nhanvien,chucvu,phongban WHERE nhanvien.chucvuid=chucvu.id"
+                + " AND nhanvien.phongbanid=phongban.id AND nhanvien.id NOT IN( "
+                + "SELECT nhanvien.id FROM nhanvien,danhgia WHERE nhanvien.id=danhgia.nhanvienid"
+                + " AND danhgia.bangkpiid=?)";
+        try{
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, b.getId());
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 if(listNhanvien==null){
